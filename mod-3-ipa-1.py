@@ -251,9 +251,5 @@ def scytale_decipher(message, shift):
         j = 0
     return ''.join(decipher)
 
-# if __name__ == "__main__":
-x = scytale_decipher("IMNNA_FTAOIGROE", 3)
-print(x)
-
 
 
