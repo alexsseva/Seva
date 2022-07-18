@@ -35,11 +35,19 @@ def shift_letter(letter, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    shiftloc = shift // 26
     loc = alphabet.find(letter)
-    if loc + shift >= 25 and letter != "":
-        return alphabet[loc + shift - 26]
-    elif loc + shift < 25 and letter != "":
-        return alphabet[loc + shift]
+    if shiftloc > 1 and shift % 26 !=0 :
+        shiftloc = shift % 26
+    elif shift % 26 == 0:
+        shiftloc = 0 
+    else: 
+        shiftloc = shift
+
+    if loc + shiftloc >= 25 and letter != "":
+        return alphabet[loc + shiftloc - 26]
+    elif loc + shiftloc < 25 and letter != "":
+        return alphabet[loc + shiftloc]
     elif letter == " ":
         return " "
    
@@ -66,12 +74,20 @@ def caesar_cipher(message, shift):
 
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     result = ""
+    shiftloc = shift // 26
+    if shiftloc > 1 and shift % 26 !=0 :
+        shiftloc = shift % 26
+    elif shift % 26 == 0:
+        shiftloc = 0 
+    else: 
+        shiftloc = shift
+
     for letter in message:
         loc = alphabet.find(letter)
-        if loc + shift >= 25 and letter != " ":
-            result = result + alphabet[loc + shift - 26]
-        elif loc + shift < 25 and letter != " ":
-            result = result + alphabet[loc + shift]
+        if loc + shiftloc >= 25 and letter != " ":
+            result = result + alphabet[loc + shiftloc - 26]
+        elif loc + shiftloc < 25 and letter != " ":
+            result = result + alphabet[loc + shiftloc]
         elif letter == " ":
             result = result + " " 
     return result
@@ -250,6 +266,3 @@ def scytale_decipher(message, shift):
             decipher.append(message[j * shift + i])
         j = 0
     return ''.join(decipher)
-
-
-
