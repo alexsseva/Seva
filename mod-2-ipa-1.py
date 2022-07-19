@@ -37,7 +37,6 @@ def savings(gross_pay, tax_rate, expenses):
     
     tax = (1 - tax_rate) * gross_pay
     pay = tax - expenses
-
     result = pay
     return int(result)
 

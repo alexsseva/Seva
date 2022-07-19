@@ -131,7 +131,6 @@ def shift_by_letter(letter, letter_shift):
         return " "
 
 
-
 def vigenere_cipher(message, key):
     '''Vigenere Cipher. 
     15 points.
