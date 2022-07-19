@@ -88,9 +88,6 @@ def tic_tac_toe(board):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    #horizontal
-
-
     for i in range(len(board)):
         if len(set(board[i])) == 1:
             return board[i][0] 
@@ -165,23 +162,3 @@ def eta(first_stop, second_stop, route_map):
         else:
             continue 
     return int(time)
-
-legs = {
-    ("upd","admu"):{
-        "travel_time_mins":10
-    },
-    ("admu","dlsu"):{
-        "travel_time_mins":35
-    },
-    ("dlsu","ust"):{
-        "travel_time_mins":55
-    },
-    ("ust","upd"):{
-        "travel_time_mins":5
-    }
-}
-
-
-x = eta("upd", "dlsu", legs)
-print(x)
-
