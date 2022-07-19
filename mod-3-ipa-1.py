@@ -44,12 +44,13 @@ def shift_letter(letter, shift):
     else: 
         shiftloc = shift
 
-    if loc + shiftloc >= 25 and letter != "":
-        return alphabet[loc + shiftloc - 26]
-    elif loc + shiftloc < 25 and letter != "":
-        return alphabet[loc + shiftloc]
-    elif letter == " ":
+    if letter == " ":
         return " "
+    elif loc + shiftloc >= 25 and letter != " ":
+        return alphabet[loc + shiftloc - 26]
+    elif loc + shiftloc < 25 and letter != " ":
+        return alphabet[loc + shiftloc]
+    
    
 
 
@@ -266,3 +267,6 @@ def scytale_decipher(message, shift):
             decipher.append(message[j * shift + i])
         j = 0
     return ''.join(decipher)
+
+x = shift_letter(" ", 33)
+print(x)

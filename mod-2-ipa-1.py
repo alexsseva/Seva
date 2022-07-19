@@ -35,10 +35,10 @@ def savings(gross_pay, tax_rate, expenses):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    tax = round((1 - tax_rate) * (gross_pay / 100))
-    pay = tax - (expenses / 100)
+    tax = (1 - tax_rate) * gross_pay
+    pay = tax - expenses
 
-    result = pay * 100
+    result = pay
     return int(result)
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
