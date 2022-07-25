@@ -90,15 +90,19 @@ def tic_tac_toe(board):
     
     for i in range(len(board)):
         if len(set(board[i])) == 1:
-            return board[i][0] 
+            if board[i][0] == "O" or board[i][0] == "X":
+                return board[i][0] 
 
+#vertical
     boardset = set()
     boardlist = list()
     for i in range(len(board)):
         for j in range(len(board)):
-            boardset.add(board[j][i])
+            if board[j][i] == "O" or board[j][i] == "X":
+                boardset.add(board[j][i])
         if len(boardset) == 1:
-            return (str(boardset.pop()))
+            if board[j][i] == "O" or board[j][i] == "X":
+                return (str(boardset.pop()))
         boardset = set()
     
     for i in range(len(board)):
@@ -117,6 +121,14 @@ def tic_tac_toe(board):
     
     return "NO WINNER"
     
+board3 = [
+['A','A','A'],
+['','O','X'],
+['X','X','O'],
+]
+
+x = tic_tac_toe(board3)
+print(x)
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
