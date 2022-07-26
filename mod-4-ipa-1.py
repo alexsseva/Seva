@@ -90,33 +90,47 @@ def tic_tac_toe(board):
     
     for i in range(len(board)):
         if len(set(board[i])) == 1:
-            return board[i][0] 
+            if (board[i][0] != ' '):
+                return board[i][0] 
 
-#vertical
     boardset = set()
     boardlist = list()
     for i in range(len(board)):
-        for j in range(len(board)):
-            boardset.add(board[j][i])
-        if len(boardset) == 1:
-                return (str(boardset.pop()))
-        boardset = set()
+            for j in range(len(board)):
+                if (' ' not in boardset):
+                    boardset.add(board[j][i])
+            if len(boardset) == 1:
+                if (' ' not in boardset):
+                    return (str(boardset.pop()))
+            boardset = set()
     
     for i in range(len(board)):
-        boardset.add(board[i][i])
+        if (' ' not in boardset):
+            boardset.add(board[i][i])
     if len(boardset) == 1:
-        return(str(boardset.pop()))
+        if (' ' not in boardset):
+            return(str(boardset.pop()))
     else:
         boardset = set()
     
     for i in range(len(board)):
         boardset.add(board[len(board) - i - 1][i])
     if len(boardset) == 1:
-        return(str(boardset.pop()))
+        if (' ' not in boardset):
+            return(str(boardset.pop()))
     else:
         boardset = set()
     
     return "NO WINNER"
+
+board1 = [
+[' ','O','O'],
+['X',' ','X'],
+['X','X',' '],
+]
+
+x = tic_tac_toe(board1)
+print(x)
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
