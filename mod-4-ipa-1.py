@@ -123,15 +123,6 @@ def tic_tac_toe(board):
     
     return "NO WINNER"
 
-board1 = [
-[' ','O','O'],
-['X',' ','X'],
-['X','X',' '],
-]
-
-x = tic_tac_toe(board1)
-print(x)
-
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
     25 points.
