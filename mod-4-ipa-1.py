@@ -90,7 +90,7 @@ def tic_tac_toe(board):
     
     for i in range(len(board)):
         if len(set(board[i])) == 1:
-            if board[i][0] == "O" or board[i][0] == "X":
+            if board[i][0] == "X" or board [i][0] == "O":
                 return board[i][0] 
 
 #vertical
@@ -98,10 +98,9 @@ def tic_tac_toe(board):
     boardlist = list()
     for i in range(len(board)):
         for j in range(len(board)):
-            if board[j][i] == "O" or board[j][i] == "X":
+            if board[j][i] == "X" or board [j][i] == "O":
                 boardset.add(board[j][i])
         if len(boardset) == 1:
-            if board[j][i] == "O" or board[j][i] == "X":
                 return (str(boardset.pop()))
         boardset = set()
     
@@ -120,15 +119,16 @@ def tic_tac_toe(board):
         boardset = set()
     
     return "NO WINNER"
-    
-board3 = [
-['A','A','A'],
-['','O','X'],
-['X','X','O'],
+
+board1 = [
+[' ',' ',' '],
+['O',' ','O'],
+[' ','O','X'],
 ]
 
-x = tic_tac_toe(board3)
+x = tic_tac_toe(board1)
 print(x)
+
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
@@ -161,16 +161,19 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    stop1st = first_stop
-    laststop = second_stop
-    time = 0
 
-    for key in route_map:
-        if(key[0] == stop1st):
-            time = time + route_map[key]['travel_time_mins']
-            stop1st = key[1]
-            if key[1] == laststop:
-                break
-        else:
-            continue 
-    return int(time)
+    stops = list(route_map.keys())
+    travel_time = list(route_map.values())
+    stop1stlist = [stops[i][0] for i in range(len(stops))]
+    laststoplist = [stops[i][1] for i in range(len(stops))]
+    time_list = [travel_time[x]["travel_time_mins"] for x in range(len(travel_time))]
+
+    stop1stindex = stop1stlist.index(first_stop)
+    laststopindex = laststoplist.index(second_stop)
+
+    start = stop1stindex
+    time = time_list[start]
+    while start != laststopindex:
+        time += time_list[(start + 1) % len(time_list)]
+        start = (start + 1) % len(time_list)
+    return time
